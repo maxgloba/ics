@@ -60,7 +60,7 @@ export default {
   components: true,
 
   router: {
-    base: '/',
+    base: './',
     mode: 'history',
     extendRoutes(routes, resolve) {
       routes.push({

@@ -72,7 +72,7 @@ export default {
   },
 
   generate: {
-    dir: './dist_server'
+    dir: './docs'
   },
 
   build: {

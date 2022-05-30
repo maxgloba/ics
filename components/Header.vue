@@ -2,11 +2,6 @@
   <header class="header">
     <div class="container">
       <img src="@/assets/img/logo.png" class="header-logo">
-      <button class="header-audio" @click.prevent="play">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
       <nav class="header-menu">
         <nuxt-link to="/">
           <svg width="41" height="24" viewBox="0 0 41 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,95 +27,55 @@
           </svg>
         </nuxt-link>
       </nav>
-      <audio controls ref="audio" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
     </div>
   </header>
 </template>
-<script>
-export default {
-  methods: {
-    play(e){
-      if(this.$refs.audio.currentTime === 0){
-        this.$refs.audio.play()
-        e.target.classList.add('active')
-      } else {
-        this.$refs.audio.pause()
-        this.$refs.audio.currentTime = 0
-      }
-      this.$refs.audio.onpause = () => {
-        console.log('111');
-        e.target.classList.remove('active')
-      }
-    }
-  }
-}
-</script>
 <style lang="scss" scoped>
 .header{
-  padding: 30px 0;
+  padding: 20px 0;
+  @media(min-width:768px){
+    padding: 30px 0;
+  }
   .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
   }
-  &-audio{
-    background: none;
-    padding: 0;
-    border: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -50%);
-    span{
-      background: #4488EE;
-      display: block;
-      width: 4px;
-      height: 20px;
-      transition: .5s ease;
-      pointer-events: none;
-      &:not(:first-child){
-        margin-left: 6px;
-      }
-    }
-    &:hover, &.active{
-      span{
-        background: #FEEF00;
-        &:nth-child(1){height: 33px;}
-        &:nth-child(2){height: 45px;}
-        &:nth-child(3){height: 23px;}
-      }
-    }
-  }
   &-logo{
     display: block;
+    width: 83px;
+    height: auto;
+    @media(min-width:768px){
+      width: 110px;
+    }
   }
   &-menu{
     display: flex;
     justify-content: space-between;
     a{
-      width: 73px;
-      height: 108px;
+      width: 55px;
+      height: 83px;
       border: 3px solid #2B2B2B;
       border-radius: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: border-color .5s ease;
+      @media(min-width:768px){
+        width: 73px;
+        height: 108px;
+      }
       &:not(:first-child) {
-        margin-left: 30px;
+        margin-left: 10px;
+        @media(min-width:768px){
+          margin-left: 30px;
+        }
       }
       &:hover{
         border-color: #FEEF00;
       }
     }
-  }
-  audio{
-    position: absolute;
-    left: -1000px;
-    opacity: 0;
   }
 }
 </style>

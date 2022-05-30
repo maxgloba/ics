@@ -60,7 +60,7 @@ export default {
   components: true,
 
   router: {
-    base: './',
+    base: '/',
     mode: 'history',
     extendRoutes(routes, resolve) {
       routes.push({
@@ -72,7 +72,7 @@ export default {
   },
 
   generate: {
-    dir: './docs'
+    dir: './dist_server'
   },
 
   build: {

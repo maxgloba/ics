@@ -15,7 +15,7 @@ export default {
     return {
       tinySliderOptions: {
         mouseDrag: true,
-        items: 3,
+        items: 1,
         swipeAngle: 45,
         center: true,
         loop: true,
@@ -23,6 +23,11 @@ export default {
         controls: false,
         nav: false,
         autoplayButtonOutput: false,
+        responsive: {
+          768: {
+            items: 3
+          }
+        }
       }
     }
   }
@@ -35,17 +40,21 @@ export default {
       overflow: visible;
     }
     &-item{
-      transform: scale(.8);
       transition: transform .5s ease;
       position: relative;
+      @media(min-width:768px){
+        transform: scale(.8);
+      }
     }
-    &-slide{
-      &-active{
-        transform: scale(.9);
-        & + .tns-slide-active{
-          transform: scale(1);
+    @media(min-width:768px){
+      &-slide{
+        &-active{
+          transform: scale(.9);
           & + .tns-slide-active{
-            transform: scale(.9);
+            transform: scale(1);
+            & + .tns-slide-active{
+              transform: scale(.9);
+            }
           }
         }
       }

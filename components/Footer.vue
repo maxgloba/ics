@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <svg width="137" height="59" viewBox="0 0 137 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="footer-logo" width="137" height="59" viewBox="0 0 137 59" fill="none" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="42.7206" cy="33.2529" rx="3.84651" ry="4.32733" fill="#FEEF00"/>
         <ellipse cx="27.7716" cy="33.2529" rx="3.84651" ry="4.32733" fill="#4488EE"/>
         <path d="M35.1762 56.8127C47.265 56.8127 57.4336 48.6304 60.3949 37.5273C60.6804 37.5622 60.9712 37.5801 61.2662 37.5801C65.1797 37.5801 68.3523 34.4229 68.3523 30.5282C68.3523 26.6335 65.1797 23.4762 61.2662 23.4762C60.9114 23.4762 60.5626 23.5022 60.2218 23.5523C57.0539 12.7648 47.0397 4.88477 35.1762 4.88477C23.3126 4.88477 13.2985 12.7648 10.1305 23.5523C9.78967 23.5022 9.44097 23.4762 9.08617 23.4762C5.17259 23.4762 2 26.6335 2 30.5282C2 34.4229 5.17259 37.5801 9.08617 37.5801C9.38114 37.5801 9.6719 37.5622 9.9574 37.5273C12.9187 48.6304 23.0873 56.8127 35.1762 56.8127Z" stroke="#4488EE" stroke-width="3"/>
@@ -27,7 +27,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .footer{
-  padding: 30px 0;
+  padding: 20px 0;
+  @media(min-width:768px){
+    padding: 30px 0;
+  }
   .container{
     display: flex;
     justify-content: space-between;
@@ -38,8 +41,25 @@ export default {
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    @media(max-width:767px){
+      width: 150px;
+      font-size: 16px;
+      line-height: 19px;
+    }
     span{
       color: #FEEF00;
+      @media(max-width:767px){
+        display: block;
+      }
+    }
+  }
+  &-logo{
+    display: block;
+    height: auto;
+    width: 137px;
+    @media(max-width:767px){
+      order: 2;
+      width: 120px;
     }
   }
 }

@@ -4,38 +4,48 @@
     <Content />
     <Slider v-if="winWidth > 768" />
     <Footer />
-    <button class="audio" @click.prevent="play">
+    <button ref="audioBtn" class="audio" @click.prevent="play">
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <audio controls ref="audio" src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"></audio>
+    <audio controls ref="audio">
+      <source src="http://nftstorks.com/audio/drums.mp3" type="audio/mpeg">
+      <source src="http://nftstorks.com/audio/drums.ogg" type="audio/ogg">
+    </audio>
   </main>
 </template>
 <script>
 export default {
   data(){
     return {
+      scrolled: false,
       winWidth: 0
     }
   },
   methods: {
-    play(e){
+    play(){
       if(this.$refs.audio.currentTime === 0){
         this.$refs.audio.play()
-        e.target.classList.add('active')
+        this.$refs.audio.volume = 0.5;
+        this.$refs.audioBtn.classList.add('active')
       } else {
         this.$refs.audio.pause()
         this.$refs.audio.currentTime = 0
       }
       this.$refs.audio.onpause = () => {
-        console.log('111');
-        e.target.classList.remove('active')
+        this.$refs.audioBtn.classList.remove('active')
       }
     }
   },
   mounted(){
     this.winWidth = window.innerWidth
+    document.addEventListener('click', e => {
+      if(!this.scrolled){
+        this.scrolled = true
+        this.play()
+      }
+    })
   }
 }
 </script>

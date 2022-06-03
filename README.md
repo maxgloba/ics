@@ -1,4 +1,4 @@
-# ics
+# nftstorks
 
 ## Build Setup
 

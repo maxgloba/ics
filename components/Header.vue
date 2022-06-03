@@ -1,7 +1,15 @@
 <template>
   <header class="header">
     <div class="container">
-      <img src="@/assets/img/logo.png" class="header-logo">
+      <button ref="audioBtn" class="audio" @click.prevent="play">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <audio controls ref="audio">
+        <source src="http://nftstorks.com/audio/drums.mp3" type="audio/mpeg">
+        <source src="http://nftstorks.com/audio/drums.ogg" type="audio/ogg">
+      </audio>
       <nav class="header-menu">
         <nuxt-link to="/">
           <svg width="41" height="24" viewBox="0 0 41 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,6 +38,38 @@
     </div>
   </header>
 </template>
+<script>
+export default {
+  data(){
+    return {
+      scrolled: false
+    }
+  },
+  methods: {
+    play(){
+      if(this.$refs.audio.currentTime === 0){
+        this.$refs.audio.play()
+        this.$refs.audio.volume = 0.5;
+        this.$refs.audioBtn.classList.add('active')
+      } else {
+        this.$refs.audio.pause()
+        this.$refs.audio.currentTime = 0
+      }
+      this.$refs.audio.onpause = () => {
+        this.$refs.audioBtn.classList.remove('active')
+      }
+    }
+  },
+  mounted(){
+    document.addEventListener('click', e => {
+      if(!this.scrolled){
+        this.scrolled = true
+        this.play()
+      }
+    })
+  }
+}
+</script>
 <style lang="scss" scoped>
 .header{
   padding: 20px 0;
@@ -41,14 +81,6 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-  }
-  &-logo{
-    display: block;
-    width: 83px;
-    height: auto;
-    @media(min-width:768px){
-      width: 110px;
-    }
   }
   &-menu{
     display: flex;
@@ -75,6 +107,38 @@
       &:hover{
         border-color: #FEEF00;
       }
+    }
+  }
+  audio{
+    position: absolute;
+    left: -1000px;
+    opacity: 0;
+  }
+}
+.audio{
+  display: flex;
+  background: none;
+  padding: 0;
+  border: none;
+  justify-content: space-between;
+  align-items: center;
+  span{
+    background: #4488EE;
+    display: block;
+    width: 4px;
+    height: 20px;
+    transition: .5s ease;
+    pointer-events: none;
+    &:not(:first-child){
+      margin-left: 6px;
+    }
+  }
+  &:hover, &.active{
+    span{
+      background: #FEEF00;
+      &:nth-child(1){height: 33px;}
+      &:nth-child(2){height: 45px;}
+      &:nth-child(3){height: 23px;}
     }
   }
 }

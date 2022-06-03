@@ -1,7 +1,7 @@
 <template>
   <section class="content">
     <div class="container">
-      <button class="btn btn-yellow">LIBERTY CRYPTOSTORKS</button>
+      <button class="btn btn-yellow">CryptoLibertyStorks</button>
       <button class="btn btn-violet">view opensea</button>
       <div class="content-desc">Evil spirits bringing pain and terror attack a prosperous country where free and happy storks live. Storks of different professions and views stood up to defend their homes to give a worthy resistance to evil. <br><br><b>Eternal memory and glory to the Heroes!</b></div>
       <Slider v-if="winWidth < 768" />
@@ -34,7 +34,7 @@ export default {
   .btn{
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     color: #0B0B0B;
     text-transform: uppercase;
@@ -46,7 +46,7 @@ export default {
     transition: background .5s ease;
     @media(min-width:768px){
       width: calc(50% - 15px);
-      font-size: 33px;
+      font-size: 30px;
       padding: 0 45px;
       line-height: 100px;
       height: 100px;

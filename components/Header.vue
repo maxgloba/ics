@@ -7,8 +7,8 @@
         <span></span>
       </button>
       <audio controls ref="audio">
-        <source src="http://nftstorks.com/audio/drums.mp3" type="audio/mpeg">
-        <source src="http://nftstorks.com/audio/drums.ogg" type="audio/ogg">
+        <source src="/audio/drums.mp3" type="audio/mpeg">
+        <source src="/audio/drums.ogg" type="audio/ogg">
       </audio>
       <nav class="header-menu">
         <nuxt-link to="/">

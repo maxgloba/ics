@@ -2,7 +2,7 @@ export default {
   ssr: false,
 
   head: {
-    title: 'ics',
+    title: 'NFT Storks',
     htmlAttrs: {
       lang: 'en'
     },

@@ -1,8 +1,9 @@
 <template>
   <main>
     <Header />
-    <Content />
     <Slider v-if="winWidth > 768" />
+    <Content />
+    <New />
     <Footer />
   </main>
 </template>

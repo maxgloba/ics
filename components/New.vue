@@ -1,16 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <button ref="audioBtn" class="audio" @click.prevent="play">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <audio controls ref="audio">
-        <source src="/audio/neon_skies_by_2050_Artlist.mp3" type="audio/mpeg">
-        <source src="/audio/neon_skies_by_2050_Artlist.ogg" type="audio/ogg">
-      </audio>
-      <nav class="header-menu">
+        <nav class="header-menu">
         <a href="https://nft-storks.creator-spring.com/">
          <svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M26.471 13.3765C26.2162 15.8931 25.0791 18.4186 22.957 20.7803C21.7209 22.1558 20.3407 23.1324 18.8772 23.7447C18.4272 24.8195 17.7549 25.8649 16.8377 26.8641C14.1675 29.7734 10.7296 30.315 7.74418 29.8552C4.81949 29.4049 2.13815 27.9846 0.473679 26.6374L3.01606 23.4222C4.20759 24.3866 6.23865 25.4585 8.35659 25.7847C10.2425 26.0751 12.0256 25.7652 13.4703 24.4469C10.5129 24.0655 7.78071 22.5445 5.78188 20.7051C4.27323 19.3167 3.04084 17.6283 2.37068 15.8537C1.70296 14.0855 1.52824 12.0185 2.53152 10.1697C3.32516 8.70722 4.50432 7.76377 5.91472 7.36648C7.25744 6.98825 8.62458 7.15502 9.80758 7.51734C12.1406 8.23187 14.3687 9.89097 15.6999 11.4301C16.5964 12.4668 17.7967 14.0263 18.622 15.9149C18.9716 16.7149 19.2635 17.5974 19.431 18.5392C19.6037 18.3759 19.7754 18.1999 19.9456 18.0106C21.572 16.2006 22.2689 14.4732 22.4224 12.9569C22.5766 11.4346 22.199 9.96929 21.4206 8.65862C19.8213 5.96558 16.6429 4.11746 13.633 4.11746V0C18.12 0 22.5993 2.64858 24.9092 6.53807C26.0854 8.51867 26.7252 10.8661 26.471 13.3765ZM15.5109 20.3887C15.5388 19.4577 15.3089 18.5162 14.8997 17.5797C14.3121 16.235 13.4106 15.0359 12.6371 14.1415C11.7191 13.0801 10.1134 11.913 8.6284 11.4582C7.90242 11.2358 7.36455 11.2322 7.00634 11.3331C6.7158 11.4149 6.39809 11.6001 6.09902 12.1513C5.85469 12.6015 5.77288 13.326 6.17247 14.3842C6.56963 15.4359 7.37897 16.6088 8.52037 17.6592C10.5164 19.496 13.1111 20.6096 15.5109 20.3887Z" fill="#53E09F"/>
@@ -39,31 +30,11 @@
 export default {
   data(){
     return {
-      scrolled: false
-    }
-  },
-  methods: {
-    play(){
-      if(this.$refs.audio.currentTime === 0){
-        this.$refs.audio.play()
-        this.$refs.audio.volume = 0.5;
-        this.$refs.audioBtn.classList.add('active')
-      } else {
-        this.$refs.audio.pause()
-        this.$refs.audio.currentTime = 0
-      }
-      this.$refs.audio.onpause = () => {
-        this.$refs.audioBtn.classList.remove('active')
-      }
+      winWidth: 0
     }
   },
   mounted(){
-    document.addEventListener('click', e => {
-      if(!this.scrolled){
-        this.scrolled = true
-        this.play()
-      }
-    })
+    this.winWidth = window.innerWidth
   }
 }
 </script>
@@ -104,38 +75,6 @@ export default {
       &:hover{
         border-color: #FEEF00;
       }
-    }
-  }
-  audio{
-    position: absolute;
-    left: -1000px;
-    opacity: 0;
-  }
-}
-.audio{
-  display: flex;
-  background: none;
-  padding: 0;
-  border: none;
-  justify-content: space-between;
-  align-items: center;
-  span{
-    background: #4488EE;
-    display: block;
-    width: 4px;
-    height: 20px;
-    transition: .5s ease;
-    pointer-events: none;
-    &:not(:first-child){
-      margin-left: 6px;
-    }
-  }
-  &:hover, &.active{
-    span{
-      background: #FEEF00;
-      &:nth-child(1){height: 33px;}
-      &:nth-child(2){height: 45px;}
-      &:nth-child(3){height: 23px;}
     }
   }
 }
